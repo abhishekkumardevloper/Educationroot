@@ -20,8 +20,7 @@ export default function Bookstore() {
     const fetchBooks = async () => {
         try {
             const response = await api.get('/books');
-            setBooks(response.data?.books || []);
-
+            setBooks(response.data.books);
         } catch (error) {
             toast.error('Failed to load books');
         } finally {
