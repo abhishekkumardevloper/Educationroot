@@ -1,0 +1,176 @@
+{
+  "project_name": "EducationRoot",
+  "design_philosophy": {
+    "name": "Electric Scholar",
+    "core_values": ["Clarity", "Focus", "Friendly Authority"],
+    "aesthetic": "Swiss Textbook meets Modern SaaS. High legibility, generous whitespace, electric blue accents against paper-white backgrounds."
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Poppins, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "usage_rules": [
+      "CRITICAL: Use 'Poppins' ONLY for Headings (h1-h6).",
+      "CRITICAL: Use 'Inter' for all body text, inputs, and UI elements.",
+      "Headings must be tight: tracking-tight (-0.02em).",
+      "Body text must be legible: leading-relaxed.",
+      "Do not use bold weights (700+) for body text. Use 500 or 600 for emphasis."
+    ],
+    "scale": {
+      "h1": "text-4xl md:text-6xl font-bold tracking-tight",
+      "h2": "text-3xl md:text-4xl font-semibold tracking-tight",
+      "h3": "text-2xl md:text-3xl font-semibold",
+      "body_lg": "text-lg leading-relaxed",
+      "body_base": "text-base leading-relaxed text-slate-600",
+      "caption": "text-sm text-slate-500"
+    }
+  },
+  "colors": {
+    "palette": {
+      "primary": {
+        "DEFAULT": "#0B6FFF",
+        "foreground": "#FFFFFF",
+        "hover": "#0055CC",
+        "light": "#E0F0FF"
+      },
+      "secondary": {
+        "DEFAULT": "#FACC15",
+        "foreground": "#0F172A"
+      },
+      "background": {
+        "DEFAULT": "#FFFFFF",
+        "subtle": "#F8FAFC",
+        "dark": "#0F172A"
+      },
+      "text": {
+        "primary": "#0F172A",
+        "secondary": "#475569",
+        "muted": "#94A3B8"
+      },
+      "status": {
+        "success": "#10B981",
+        "error": "#EF4444",
+        "warning": "#F59E0B"
+      }
+    },
+    "usage_rules": [
+      "Primary Blue (#0B6FFF) is for CTAs and active states ONLY. Do not overuse.",
+      "Use Slate-50 (#F8FAFC) for section backgrounds to create depth without lines.",
+      "Text should never be pure black (#000000). Use Slate-900 (#0F172A).",
+      "Use Yellow (#FACC15) sparingly for 'Highlighter' effects on key words."
+    ]
+  },
+  "layout": {
+    "grid_system": "12-column grid",
+    "spacing": {
+      "base": "8px",
+      "container_padding": "px-4 md:px-8 lg:px-12",
+      "section_spacing": "py-16 md:py-24"
+    },
+    "border_radius": {
+      "card": "rounded-xl",
+      "button": "rounded-full",
+      "input": "rounded-lg"
+    },
+    "containers": {
+      "max_width": "max-w-7xl mx-auto"
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#0B6FFF] text-white hover:bg-[#0055CC] rounded-full px-8 py-3 font-medium transition-all shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5",
+      "secondary": "bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 rounded-full px-8 py-3 font-medium transition-all",
+      "ghost": "text-slate-600 hover:text-[#0B6FFF] hover:bg-blue-50 rounded-full px-6 py-2 transition-colors"
+    },
+    "cards": {
+      "default": "bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-md transition-shadow p-6",
+      "interactive": "group bg-white border border-slate-100 rounded-xl shadow-sm hover:shadow-xl hover:shadow-blue-500/10 hover:border-blue-100 transition-all duration-300 cursor-pointer"
+    },
+    "inputs": {
+      "default": "h-12 rounded-lg border-slate-200 focus:border-[#0B6FFF] focus:ring-2 focus:ring-blue-100 transition-all"
+    }
+  },
+  "visual_enhancers": {
+    "shadows": {
+      "soft": "shadow-[0_2px_8px_rgba(0,0,0,0.04)]",
+      "glow": "shadow-[0_0_20px_rgba(11,111,255,0.15)]"
+    },
+    "gradients": {
+      "hero_overlay": "bg-gradient-to-b from-blue-50/50 to-white",
+      "text_gradient": "bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-400"
+    },
+    "textures": "Use subtle noise overlays on solid blue backgrounds to reduce digital flatness."
+  },
+  "image_urls": {
+    "hero_student": {
+      "url": "https://images.pexels.com/photos/4308093/pexels-photo-4308093.jpeg",
+      "alt": "Indian student studying happily with laptop",
+      "category": "hero"
+    },
+    "bookstore_stack": {
+      "url": "https://images.pexels.com/photos/3747507/pexels-photo-3747507.jpeg",
+      "alt": "Minimalist stack of textbooks",
+      "category": "bookstore"
+    },
+    "mock_test_laptop": {
+      "url": "https://images.pexels.com/photos/6683409/pexels-photo-6683409.jpeg",
+      "alt": "Student taking online test on laptop",
+      "category": "features"
+    },
+    "teacher_classroom": {
+      "url": "https://images.pexels.com/photos/6936163/pexels-photo-6936163.jpeg",
+      "alt": "Indian teacher interacting with class",
+      "category": "about"
+    }
+  },
+  "component_paths": {
+    "button": "/app/frontend/src/components/ui/button.jsx",
+    "card": "/app/frontend/src/components/ui/card.jsx",
+    "input": "/app/frontend/src/components/ui/input.jsx",
+    "dialog": "/app/frontend/src/components/ui/dialog.jsx",
+    "sheet": "/app/frontend/src/components/ui/sheet.jsx",
+    "dropdown": "/app/frontend/src/components/ui/dropdown-menu.jsx",
+    "tabs": "/app/frontend/src/components/ui/tabs.jsx",
+    "avatar": "/app/frontend/src/components/ui/avatar.jsx",
+    "badge": "/app/frontend/src/components/ui/badge.jsx",
+    "calendar": "/app/frontend/src/components/ui/calendar.jsx",
+    "select": "/app/frontend/src/components/ui/select.jsx",
+    "separator": "/app/frontend/src/components/ui/separator.jsx",
+    "table": "/app/frontend/src/components/ui/table.jsx",
+    "textarea": "/app/frontend/src/components/ui/textarea.jsx",
+    "toast": "/app/frontend/src/components/ui/sonner.jsx"
+  },
+  "instructions_to_main_agent": [
+    "1. FILE EXTENSIONS: The project uses .jsx files, NOT .tsx. Adjust all imports and file creations accordingly.",
+    "2. SHADCN: The components are already installed in /app/frontend/src/components/ui/. Use them. Do not reinstall.",
+    "3. ICONS: Use 'lucide-react' for icons. It is the standard for Shadcn.",
+    "4. ROUTING: Ensure 'react-router-dom' is used for navigation.",
+    "5. RESPONSIVE: Always design Mobile-First. Use 'md:' and 'lg:' prefixes for desktop layouts.",
+    "6. DATA-TESTID: Add 'data-testid' to all interactive elements (buttons, inputs, links) for testing.",
+    "7. MOCK DATA: Since the backend might not be ready, create a 'mockData.js' file to populate the UI with realistic content.",
+    "8. BILINGUAL: Prepare the UI structure to handle text swapping (English/Hindi), even if the translation logic isn't fully implemented yet."
+  ],
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy",
+    "Use glass-morphism effects with backdrop filters (12-24px blur)",
+    "You MUST NOT apply universal transition. Eg: 'transition: all'. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms",
+    "You MUST NOT center align the app container, ie do not add '.App { text-align: center; }' in the css file. This disrupts the human natural reading flow of text",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠💭💡🔮🎯📚🎭🎬🎪🎉🎊🎁🎀🎂🍰🎈🎨🎰💰💵💳🏦💎🪙💸🤑📊📈📉💹🔢🏆🥇 etc for icons.",
+    "Every interaction needs micro-animations - hover states, transitions, parallax effects, and entrance animations. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+    "Main agent relies on these image URLs. Missing categories (especially sponsor logos) = main agent will use placeholder text which is FORBIDDEN",
+    "Prioritize using pre-existing components from src/components/ui when applicable",
+    "Create new components that match the style and conventions of existing components when needed",
+    "Examine existing components to understand the project's component patterns before creating new ones",
+    "Components MUST use named exports (export const ComponentName = ...)",
+    "Pages MUST use default exports (export default function PageName() {...})",
+    "Use 'sonner' for toasts. Sonner component are located in '/app/frontend/src/components/ui/sonner.jsx'"
+  ]
+}
