@@ -1,70 +1,105 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import api from '../utils/api';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import api from "../utils/api";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [language, setLanguage] = useState('en');
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [language, setLanguage] = useState("en");
 
-    useEffect(() => {
-        const token = localStorage.getItem('token');
-        const savedLang = localStorage.getItem('language') || 'en';
-        setLanguage(savedLang);
-        
-        if (token) {
-            api.get('/auth/me')
-                .then(res => {
-                    setUser(res.data.user);
-                    setLanguage(res.data.user.language || 'en');
-                })
-                .catch(() => {
-                    localStorage.removeItem('token');
-                })
-                .finally(() => setLoading(false));
-        } else {
-            setLoading(false);
-        }
-    }, []);
+  // Load token & language on refresh
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const savedLang = localStorage.getItem("language") || "en";
+    setLanguage(savedLang);
 
-    const login = async (email, password) => {
-        const response = await api.post('/auth/login', { email, password });
-        localStorage.setItem('token', response.data.token);
-        setUser(response.data.user);
-        setLanguage(response.data.user.language || 'en');
-        return response.data;
-    };
+    if (token) {
+      api
+        .get("/auth/me")
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch(() => {
+          localStorage.removeItem("token");
+          setUser(null);
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setLoading(false);
+    }
+  }, []);
 
-    const register = async (name, email, password) => {
-        const response = await api.post('/auth/register', { name, email, password, language });
-        localStorage.setItem('token', response.data.token);
-        setUser(response.data.user);
-        return response.data;
-    };
+  // LOGIN
+  const login = async (email, password) => {
+    const res = await api.post("/auth/login", { email, password });
 
-    const logout = () => {
-        localStorage.removeItem('token');
-        setUser(null);
-    };
+    const token =
+      res.data.token ||
+      res.data.access_token;
 
-    const toggleLanguage = () => {
-        const newLang = language === 'en' ? 'hi' : 'en';
-        setLanguage(newLang);
-        localStorage.setItem('language', newLang);
-    };
+    if (!token) {
+      throw new Error("Token not received from server");
+    }
 
-    return (
-        <AuthContext.Provider value={{ user, loading, login, register, logout, language, toggleLanguage }}>
-            {children}
-        </AuthContext.Provider>
-    );
+    localStorage.setItem("token", token);
+    setUser(res.data.user || null);
+  };
+
+  // REGISTER
+  const register = async (name, email, password) => {
+    const res = await api.post("/auth/register", {
+      name,
+      email,
+      password,
+    });
+
+    const token =
+      res.data.token ||
+      res.data.access_token;
+
+    if (!token) {
+      throw new Error("Token not received from server");
+    }
+
+    localStorage.setItem("token", token);
+    setUser(res.data.user || null);
+  };
+
+  // LOGOUT
+  const logout = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
+  // LANGUAGE
+  const toggleLanguage = () => {
+    const newLang = language === "en" ? "hi" : "en";
+    setLanguage(newLang);
+    localStorage.setItem("language", newLang);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        user,
+        loading,
+        login,
+        register,
+        logout,
+        language,
+        toggleLanguage,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {
-    const context = useContext(AuthContext);
-    if (!context) {
-        throw new Error('useAuth must be used within AuthProvider');
-    }
-    return context;
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error("useAuth must be used inside AuthProvider");
+  }
+  return ctx;
 };
